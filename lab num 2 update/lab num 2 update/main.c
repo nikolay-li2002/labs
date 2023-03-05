@@ -69,18 +69,18 @@ int main() {
             scanf ("%d", &array[k][r]);
         }
     }
-    int v;
-    if (p==2 && l==2){
-        v = array[0][0]*array[1][1] - array[0][1]*array[1][0];
-        printf ("%d\n", v);
+    int w, q=0;
+    for(int i=0; i<p; i++){
+        for (int e=0; e<p; e++) {
+            w=0;
+            for(int o=0; o<p; o++){
+                w += array[i][o]*array[o][i+(e-q)];
+            }
+            printf("%d ", w);
+        }
+        printf("\n");
+        q=q+1;
     }
-    else if (p==3 && l==3){
-        v = array[0][0]*array[1][1]*array[2][2] + array[0][1]*array[1][2]*array[2][0] + array[0][2]*array[1][0]*array[2][1] - array[0][2]*array[1][1]*array[2][0] - array[0][1]*array[1][0]*array[2][2] - array[0][0]*array[1][2]*array[2][1];
-        printf ("%d\n", v);
-    }
-//    else {
-//        v = array[0][0]*(array[1][1]*array[2][2]*array[3][3] + array[1][2]*array[2][3]*array[3][1] + array[1][3]*array[2][1]*array[3][2] - array[1][3]*array[2][2]*array[3][1] - array[1][2]*array[2][1]*array[3][3] - array[1][1]*array[2][3]*array[3][2]) - );
-        
-//    }
+
     return 0;
 }
