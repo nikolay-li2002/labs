@@ -8,16 +8,24 @@
 // Разместить их в отдельном модуле (отличном от того, где располагается функция main( )).
 // Ввести с консоли значения длин сторон треугольника (с проверкой на корректность неравенства треугольника) и выдать на консоль вычисленные с помощью написанных функций значения его периметра и площади.
 
-#include "Formula.h"
+#include "Triangle.h"
 
-void formula(double a, double b, double c);
 
 int main() {
-    double a, b, c;
+    double a, b, c, per, s;
     scanf("%lf", &a);
     scanf("%lf", &b);
     scanf("%lf", &c);
-    formula(a, b, c);
+    if (a+b > c && a+c > b && b+c > a) {
+        
+        per = formula_p(a, b, c);
+        s = formula_s(a, b, c, per);
+        
+        printf("Значение периметра = %f\n", per);
+        printf("Значение площади = %f\n", s);
+    } else {
+        printf("Треугольник не существует\n");
+    }
     
     return 0;
 }
