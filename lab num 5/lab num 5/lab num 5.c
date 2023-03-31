@@ -7,38 +7,28 @@
 
 
 // Разместить в динамической памяти 2 массива – 2 матрицы размерностью n на n с элемен-тами типа double (значения n и элементы массивов ввести с консоли). А также ввести с консоли знак операции: '+', '-' или '*'. Написать функцию, вычисляющую сумму, разность или произведение данных матриц (их передать по указателю) и возвращающую указатель на массив-результат. Разместить эту функцию в отдельном модуле (отличном от того, где располагается функция main()). Выдать на консоль значения полученного вектора.
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+#include "funct.h"
+
 
 int main() {
-    int y;
-    printf("Количество строк в матрице ");
-    scanf("%d", &y);
-    
-    double *matrix1 = malloc(2*y*y*sizeof(double));
-    
-    printf("Заполните первую матрицу\n");
-    double matrix1[y][y];
-    for(int i=0; i<y; i++) {
-        for(int o=0; o<y; o++){
-            scanf ("%lf", &matrix1[i][o]);
-        }
-    }
-    
-    
-    printf("Заполните вторую матрицу\n");
-    double matrix2[y][y];
-    for(int i=0; i<y; i++) {
-        for(int o=0; o<y; o++){
-            scanf ("%lf", &matrix2[i][o]);
-        }
-    }
-    
-    
-    
-    
-    
-    
+    int n;
+    char c;
+
+    printf("Напишите размер матрицы: \n");
+    scanf("%d", &n);
+
+    double **mat1 = new_matrix(n);
+    double **mat2 = new_matrix(n);
+
+    printf("Введите матрицу номер 1: \n");
+    input(n, mat1);
+
+    printf("Введите матрицу номер 2: \n");
+    input(n, mat2);
+
+    printf("+, -  или * ? \n");
+    scanf(" %c", &c);
+    double** res = calc_mat(n, mat1, mat2, c);
+    print_mat(n, res);
     return 0;
 }
